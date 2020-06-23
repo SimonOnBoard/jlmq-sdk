@@ -15,8 +15,7 @@ public class Connector {
         applicationContext = ac;
         objectMapper = applicationContext.getBean("objectMapper", ObjectMapper.class);
         consumerManager = (ConsumerManager) applicationContext.getBean("consumerManager");
-        clientEndPoint = new ClientEndPoint(this,
-                (ConsumerManager) applicationContext.getBean("consumerManager"), objectMapper);
+        clientEndPoint = new ClientEndPoint((ConsumerManager) applicationContext.getBean("consumerManager"), objectMapper);
         clientEndPoint.connect(uri);
     }
 
@@ -43,8 +42,8 @@ public class Connector {
         return consumerManager.putCurrentSession(queue, consumer);
     }
 
-    public void close(){
-        if(!clientEndPoint.isClosed()){
+    public void close() {
+        if (!clientEndPoint.isClosed()) {
             clientEndPoint.disconnect();
         }
     }

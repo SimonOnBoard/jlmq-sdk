@@ -12,15 +12,13 @@ import java.net.URI;
 public class ClientEndPoint {
     private WebSocketContainer container;
     private Session userSession;
-    private Connector connector;
     private boolean isClosed;
     private ConsumerManager consumerManager;
     private ObjectMapper objectMapper;
 
-    public ClientEndPoint(Connector connector, ConsumerManager consumerManager, ObjectMapper objectMapper) {
+    public ClientEndPoint(ConsumerManager consumerManager, ObjectMapper objectMapper) {
         container = ContainerProvider.getWebSocketContainer();
         this.consumerManager = consumerManager;
-        this.connector = connector;
         isClosed = true;
         this.objectMapper = objectMapper;
     }

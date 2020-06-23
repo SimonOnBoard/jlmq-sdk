@@ -17,7 +17,7 @@ public class Main {
         consumer.setHandler(messageHandler, SimpleTextMessage.class);
         Consumer consumer1 = connector.consumer("toPrint");
         consumer1.setHandler(messageHandler1, SimpleTextMessage.class);
-
+        producer.send(new SimpleTextMessage("Hello"));
 
         Thread.sleep(30000);
         connector.close();
